@@ -1,2 +1,2 @@
-# mdu-2021-Y-spring
-Code samples for the programming class
+# mdu-2021-F-foraaar
+Boilerplates til proframmering: foråret 2021.
