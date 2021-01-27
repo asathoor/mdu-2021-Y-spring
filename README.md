@@ -1,2 +1,2 @@
-# mdu-2021-F-foraaar
-Boilerplates til proframmering: foråret 2021.
+# mdu-2021-Y-foraaar
+Boilerplates for the programming class at the Multimedia Designer Programme.
