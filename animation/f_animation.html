@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+    <style>
+        body {
+            background-color: #000;
+        }
+        
+        #monster {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .myAnimation {
+            animation-name: example;
+            animation-duration: 6s;
+        }
+
+        @keyframes example {
+            from {
+                left: 0px;
+            }
+
+            to {
+                left: 777px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Add class by click</h1>
+
+    
+    <img id="monster" src="https://cdn2.iconfinder.com/data/icons/space-25/64/UFO-128.png" alt="ufo">
+    
+    <button class="favorite styled" type="button" onclick="runAnimation()">
+        Klik her
+    </button>
+
+    <script>
+        let runAnimation = function() {
+            alert('Klik opdaget');
+            document.getElementById("monster").classList.add("myAnimation");
+        }
+    </script>
+
+</body>
+
+</html>
