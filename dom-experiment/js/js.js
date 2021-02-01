@@ -35,7 +35,23 @@ let pixiesExist = false;
 
 let doIcare = null;
 
-console.log( myNumber )
+const myName = "Per";
+const city = "Aarhus";
+
+let b = "The result is: "
+let c = (47 + 234) / 1.234
+
+var a // deprecated but you may use
+
+let z = 345
+z++
+
+let aaa = (12 + 4) / 89
+
+let foo = document.getElementById('result')
+foo.innerHTML = "<h3>The result from the jury of Timisoara is:<br><em> " + aaa + "</em><br> Isn't it.</h3>"
+
+console.log( "now : " + aaa )
 
 
 

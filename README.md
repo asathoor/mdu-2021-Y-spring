@@ -1,2 +1,6 @@
-# mdu-2021-Y-foraaar
-Boilerplates for the programming class at the Multimedia Designer Programme.
+JavaScript Boilerplates
+=======================
+
+In this directory you'll find several JavaScript boilterplates.
+
+* jsBoilerplate.html: Vanilla JavaScript
