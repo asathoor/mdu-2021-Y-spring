@@ -1,0 +1,9 @@
+/**
+ * file: style.css
+ * purpose: styles, animation etc
+ * further development: meyer reset perhaps?
+ **/
+body {
+    background-color: orange;
+    font-size: 2rem;
+    }
