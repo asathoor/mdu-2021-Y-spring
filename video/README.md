@@ -1,4 +1,5 @@
-# JavaScript Boilerplate: Video
+JavaScript Boilerplate: Video
+=============================
 
 Here is a vanilla Javascript for videos. In this case the event listener works on the element via onclick(). Often W3 will show that sort of code first. However it's kind of a mess. The JavaScripts should happen in ... the JavaScript.
 
