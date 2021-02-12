@@ -1,6 +1,12 @@
-JavaScript Boilerplates
-=======================
+2nd Semester Programming
+========================
 
-In this directory you'll find several JavaScript boilterplates.
+## Class: Y 20201 Multimediadesigner
 
-* jsBoilerplate.html: Vanilla JavaScript
+In this directory you'll find several JavaScript boilterplates and code samples.
+
+* Basic JavaScript boilerplate
+* Audio / Video Control
+* Events
+
+And more.
