@@ -1,0 +1,18 @@
+/**
+ * file: style.css
+ * purpose: styles, animation etc
+ * further development: meyer reset perhaps?
+ **/
+body {
+  background-color: yellow;
+  overflow: hidden;
+}
+
+.red {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  background-color: red;
+}
+
+
