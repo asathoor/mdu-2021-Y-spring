@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add custom icons with Markers</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map {
+  width: 500px;
+  height:500px; }
+</style>
+</head>
+<body>
+<style>
+    .marker {
+        display: block;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+    }
+</style>
+
+<div id="map"></div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYXNhdGhvb3IiLCJhIjoiY2oyd3hlbzU3MDA5NzJxbm9iMjczanJndCJ9.HahDB7Z1rrD5THIYQh6t4g';
+    var geojson = {
+        'type': 'FeatureCollection',
+        'features': [
+            {
+                'type': 'Feature',
+                'properties': {
+                    'message': 'Foo',
+                    'iconSize': [100, 100]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-66.324462890625, -16.024695711685304]
+                }
+            },
+            {
+                'type': 'Feature',
+                'properties': {
+                    'message': 'Bar',
+                    'iconSize': [50, 50]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [11.31332, 57.14188]
+                }
+            },
+            {
+                'type': 'Feature',
+                'properties': {
+                    'message': 'Oh you clicked me',
+                    'iconSize': [100, 100]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [10.21332, 56.12188]
+                }
+            }
+        ]
+    };
+
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [10.21332, 56.12188], // 56.12188/10.21332
+        zoom: 13
+    });
+
+    // add markers to map
+    geojson.features.forEach(function (marker) {
+        // create a DOM element for the marker
+        var el = document.createElement('div');
+        el.className = 'marker';
+
+        // from here; the image
+        el.style.backgroundImage =
+            'url(https://placekitten.com/g/' +
+            marker.properties.iconSize.join('/') +
+            '/)';
+        el.style.width = marker.properties.iconSize[0] + 'px';
+        el.style.height = marker.properties.iconSize[1] + 'px';
+
+        el.addEventListener('click', function () {
+            window.alert(marker.properties.message);
+        });
+
+        // add marker to map
+        new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+    });
+</script>
+
+</body>
+</html>
