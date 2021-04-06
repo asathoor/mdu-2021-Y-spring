@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Weather: Here and now</title>
+    <title>Weather as JSON data</title>
 
     <style>
         /* google font: Berkshire */
@@ -29,67 +29,56 @@
 
 <body>
 
-    <h1>Openweathermap Eksempel</h1>
+    <h1>Openweathermap Sample</h1>
 
-    <!-- herunder kan du se vejroplysningerne -->
+    <!-- below: weather info -->
     <div id="result"></div>
 
     <script>
         /*
-@datasæt læses sådan:
+        @url is understood like this:
 
-http://api.openweathermap.org/data/2.5/weather?
-q=Aarhus
-&lang=da
-&units=metric
-&appid=201d090c9cceacfc8931df89310ebfbb
+        http://api.openweathermap.org/data/2.5/weather?
+        q=Aarhus
+        &lang=da
+        &units=metric
+        &appid=201d090c9cceacfc8931dAADFFDzzz
+        */
 
-*/
-
-// token from OpenWeatherMap
+// token from OpenWeatherMap (you may have to wait for it)
 const appId = 'ADD-YOUR-TOKEN-HERE';
 
 // get the weather JSON data via query URI
-fetch("http://api.openweathermap.org/data/2.5/weather?q=Aarhus&lang=da&units=metric&appid=" + appId).then(
-    response => {
-    return response.json(); // get weather data as JSON
-}).then(data => {
+fetch("http://api.openweathermap.org/data/2.5/weather?q=Aarhus&lang=da&units=metric&appid=" + appId)
+    .then( response => {
+        return response.json(); // get weather data as JSON
+})
+    .then(data => {
 
-    // Work with JSON data here
-    console.log(data); // show what's in the json
+        // display the JSON in the console
+        console.log(data); 
 
-    // solnedgang
-    var sunsetMs = data.sys.sunset * 1000; // dato-objektet har brug for millisek. Derfor * 1000
-    var sunset = new Date(sunsetMs);
+        // add weather data to #result
+        document.getElementById('result').innerHTML =
 
-    // Datoformattering @URI < https://www.w3schools.com/js/js_date_methods.asp >
-    var sunsetTime = sunset.getHours() + ":" + sunset.getMinutes();
+            // append a div and add
+            '<div class="weatherInfo">' +
 
-    // lægger vejrdata ind i #result
-    document.getElementById('result').innerHTML =
+            // name of the town in q
+            '<h1> ' + data.name + ' </h1>' +
 
-        // tilføjer ("append") en div til vejroplysninger
-        '<div class="weatherInfo">' +
+            // weather description
+            '<h2>Weather now: ' + data.weather[0].description + '</h2>' +
 
-        // tilføjer bynavn
-        '<h1> ' + data.name + ' </h1>' +
+            // add a weather symbol via an img element
+            '<figure>' +
+            '<img src="http://openweathermap.org/img/wn/' + data.weather[0].icon +
+            '.png" alt="Vejrsymbol">' +
+            '</figure>' +
 
-        // tilføjer en beskrivelse af vejret lige nu
-        '<h2>Vejr: ' + data.weather[0].description + '</h2>' +
+            '</div>'; // ends the weather info tag
 
-        // tilføjer vejrsymbol
-        '<figure>' +
-        '<img src="http://openweathermap.org/img/wn/' + data.weather[0].icon +
-        '.png" alt="Vejrsymbol">' +
-        '</figure>' +
-
-        // tilføjer klokkeslet for solens nedgang i vest
-        '<p> Solnedgang: ' + sunsetTime + '</p>' +
-
-        // afslutter #weatherInfo taggen
-        '</div>'; // 
-
-    // URL to the weather icons: https://openweathermap.org/weather-conditions 
+            // @URL to the weather icons: https://openweathermap.org/weather-conditions 
 
 }).catch(err => {
     // Do something with error here
