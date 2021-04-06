@@ -29,7 +29,7 @@
 
 <body>
 
-    <h1>Openweathermap Sample</h1>
+    <h1>Openweathermap</h1>
 
     <!-- below: weather info -->
     <div id="result"></div>
@@ -73,7 +73,7 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Aarhus&lang=da&units=met
             // add a weather symbol via an img element
             '<figure>' +
             '<img src="http://openweathermap.org/img/wn/' + data.weather[0].icon +
-            '.png" alt="Vejrsymbol">' +
+            '.png" alt="Actual weather symbol">' +
             '</figure>' +
 
             '</div>'; // ends the weather info tag
@@ -82,7 +82,7 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Aarhus&lang=da&units=met
 
 }).catch(err => {
     // Do something with error here
-    console.log('There was an error ...');
+    console.log('There was an error');
 });
 </script>
 
