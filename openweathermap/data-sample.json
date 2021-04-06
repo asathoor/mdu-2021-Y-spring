@@ -1,0 +1,22 @@
+[
+ {
+   "name": "Alice",
+   "age": 72,
+   "eyecolor": "brown"
+ },
+ {
+   "name": "Tarzan",
+   "age": 43,
+   "eyecolor": "grey"
+ },
+ {
+   "name": "Nimrod",
+   "age": 54,
+   "eyecolor": "brown"
+ },
+ {
+   "name": "Cleopatra",
+   "age": 44,
+   "eyecolor": "bluegrey"
+ }
+]

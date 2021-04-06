@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ol id="result"></ol>
+    <script>
+    fetch('data-sample.json').then(
+    response => {
+    return response.json(); // get weather data as JSON
+}).then(data => {
+
+    // Work with JSON data here
+    console.log(data); // show what's in the json
+
+    // get one value:
+    //  document.getElementById('result').innerHTML = data[0].name
+    // since it's an array ... loop it out:
+        
+    // loop out something
+    for (let i = 0; i < data.length; i++){
+        document.getElementById('result').innerHTML += '<li>' + data[i].eyecolor
+    }
+
+}).catch(err => {
+    // Do something with error here
+    console.log('There was an error ...')
+})
+
+    </script>
+</body>
+</html>
