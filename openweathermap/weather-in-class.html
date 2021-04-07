@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Weather as JSON data</title>
+
+    <style>
+        /* google font: Berkshire */
+        @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
+        body {
+            text-align: center;
+            font-family: sans serif;
+            font-size: large;
+            background: black;
+            color: lawngreen;
+            font-family: 'Berkshire Swash', cursive;
+        }
+
+        .weatherInfo {
+            border: 1px solid lawngreen;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Openweathermap</h1>
+
+    <!-- below: weather info -->
+    <div id="result"></div>
+
+    <script>
+        /*
+        @url is understood like this:
+
+        http://api.openweathermap.org/data/2.5/weather?
+        q=Aarhus
+        &lang=da
+        &units=metric
+        &appid=201d090c9cceacfc8931dAADFFDzzz
+        */
+
+// token from OpenWeatherMap (you may have to wait for it)
+const appId = 'YOUR-TOKEN-GOES-HERE';
+
+// get the weather JSON data via query URI
+fetch("http://api.openweathermap.org/data/2.5/weather?q=Copenhagen&lang=da&units=metric&appid=" + appId)
+    .then( response => {
+        return response.json(); // get weather data as JSON
+})
+    .then(data => {
+
+        // display the JSON in the console
+        console.log(data);
+
+        // add weather data to #result
+        document.getElementById('result').innerHTML =
+
+            // append a div and add
+            '<div class="weatherInfo">' +
+
+            // name of the town in q
+            '<h1> ' + data.name + ' </h1>' +
+            '<p> Humidity ' + data.main.humidity + ' </p>' +
+
+            // ASSIGNMENT FIVE MINUTES
+            // choose a VALUE from the json and write this to the html here
+            '<p> Humidity: ' + data.main.humidity + '.</p>' +
+            '<p> Clouds: ' + data.clouds.all + '.</p>' +
+
+            // weather description
+            '<h2>Weather now: ' + data.weather[0].description + '</h2>' +
+
+            // add a weather symbol via an img element
+            '<figure>' +
+            '<img src="images/' + data.weather[0].icon +
+            '.png" alt="Actual weather symbol">' +
+            '</figure>' +
+
+            '</div>'; // ends the weather info tag
+
+            // @URL to the weather icons: https://openweathermap.org/weather-conditions
+
+}).catch(err => {
+    // Do something with error here
+    console.log('There was an error');
+});
+</script>
+
+</body>
+</html>

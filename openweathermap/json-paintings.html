@@ -1,0 +1,60 @@
+<!doctype html>
+
+    <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>JSON Sample</title>
+ 
+</head>
+
+<body>
+  <h1>JSON sample</h1>
+    <div id="booklist"></div>
+    
+    <script>
+        // this is json
+        let myPaintings = { 
+            'artist' : 'Jorgen Nash',
+            'title' : 'Drakabygget no. 56',
+            'materials' : ['oil paint', 'mixed media', 'collage'], 
+            'year' : 2018 
+        }
+        
+        // HOW "PRINT" THAT LIST TO THE HTML?
+        
+        // another ways of doing JSON models
+        let otherModel = {
+         'paintings' : [
+                'Asger Jorn: Litografi, 1956',
+                'Salvador Dali: My Paranoiacritic Method, 1946',
+                { 
+                 'name' : 'Albrecht Dürer', 
+                 'title' : 'Self portrait',
+                 'year' : 1559
+                }
+             ]
+        }
+        
+        console.log(otherModel)
+        console.log('---')
+        console.log(myPaintings)
+        
+        // write from json to html
+        document.getElementById('booklist').innerHTML = myPaintings.title
+        
+        // how to pull data from an array?
+        document.getElementById('booklist').innerHTML += myPaintings.materials[0]
+        
+        for (let i = 0; i < myPaintings.materials.length; i++){
+               console.log(myPaintings.materials[i])
+                document.getElementById('booklist').innerHTML += myPaintings.materials[i]
+        }
+        
+        // how can we get all the ... from a list out of the json?
+        
+        
+        // we'll meet again 09.50
+        
+    </script>
+</body>
+</html>

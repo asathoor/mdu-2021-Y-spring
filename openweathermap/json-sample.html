@@ -1,0 +1,35 @@
+<!doctype html>
+
+    <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>JSON Sample</title>
+ 
+</head>
+
+<body>
+  <h1>JSON sample</h1>
+    <div id="booklist"></div>
+    
+    <script>
+        // this is json
+        let myBooks = { 
+            'title' : 'Learning Web Design',
+            'authors' : ['Jennifer', 'Nielsen'], 
+            'year' : 2021 
+        }
+        
+        console.log(myBooks)
+        
+        // write from json to html
+        document.getElementById('booklist').innerHTML = myBooks.title
+        
+        // how to pull data from an array?
+        document.getElementById('booklist').innerHTML += myBooks.authors[0]
+        
+        // how can we get all the authors out of the json?
+        // we'll meet again 09.50
+        
+    </script>
+</body>
+</html>

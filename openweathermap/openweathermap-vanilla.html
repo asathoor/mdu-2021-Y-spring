@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Weather as JSON data</title>
+    <title>Weather: Here and now</title>
 
     <style>
         /* google font: Berkshire */
@@ -29,60 +29,86 @@
 
 <body>
 
-    <h1>Openweathermap</h1>
+    <h1>Openweathermap Eksempel</h1>
 
-    <!-- below: weather info -->
+    <!-- herunder kan du se vejroplysningerne -->
     <div id="result"></div>
 
     <script>
         /*
-        @url is understood like this:
+            @datasæt læses sådan:
 
-        http://api.openweathermap.org/data/2.5/weather?
-        q=Aarhus
-        &lang=da
-        &units=metric
-        &appid=201d090c9cceacfc8931dAADFFDzzz
+            http://api.openweathermap.org/data/2.5/weather?
+            q=Aarhus
+            &lang=da
+            &units=metric
+            &appid=201d090c9cceacfc8931df89310ebfbb
+
         */
 
-// token from OpenWeatherMap (you may have to wait for it)
+// token from OpenWeatherMap
+
 const appId = 'ADD-YOUR-TOKEN-HERE';
 
+
 // get the weather JSON data via query URI
-fetch("http://api.openweathermap.org/data/2.5/weather?q=Aarhus&lang=da&units=metric&appid=" + appId)
-    .then( response => {
-        return response.json(); // get weather data as JSON
-})
-    .then(data => {
+fetch("http://api.openweathermap.org/data/2.5/weather?q=Aarhus&lang=da&units=metric&appid=" + appId ).then(
+    response => {
+    return response.json(); // get weather data as JSON
+}).then(data => {
 
-        // display the JSON in the console
-        console.log(data); 
+    // Work with JSON data here
+    console.log(data); // show what's in the json
 
-        // add weather data to #result
-        document.getElementById('result').innerHTML =
+    // solnedgang
+    var sunsetMs = data.sys.sunset * 1000; // dato-objektet har brug for millisek. Derfor * 1000
+    var sunset = new Date(sunsetMs);
 
-            // append a div and add
-            '<div class="weatherInfo">' +
+    // Datoformattering @URI < https://www.w3schools.com/js/js_date_methods.asp >
+    var sunsetTime = sunset.getHours() + ":" + sunset.getMinutes();
 
-            // name of the town in q
-            '<h1> ' + data.name + ' </h1>' +
+    // lægger vejrdata ind i #result
+    document.getElementById('result').innerHTML =
 
-            // weather description
-            '<h2>Weather now: ' + data.weather[0].description + '</h2>' +
+        // tilføjer ("append") en div til vejroplysninger
+        '<div class="weatherInfo">' +
 
-            // add a weather symbol via an img element
-            '<figure>' +
-            '<img src="http://openweathermap.org/img/wn/' + data.weather[0].icon +
-            '.png" alt="Actual weather symbol">' +
-            '</figure>' +
 
-            '</div>'; // ends the weather info tag
 
-            // @URL to the weather icons: https://openweathermap.org/weather-conditions 
+        // tilføjer bynavn
+        '<h1> ' + data.name + ' </h1>' +
+        '<h2> Luftfugtighed: ' + data.main.humidity + ' </h2>' +
+
+        // OPGAVE:
+        // SKRIV HVOR VARMT DET ER LIGE NU?
+        // VIA JSON
+        // ----
+        // hvor varmt er der lige nu i min by?
+        '<aside id="temperatur" class="enClass"> Temperatur: ' + data.main.temp + ' </aside>' +
+
+        // tilføjer en beskrivelse af vejret lige nu
+        '<h2>Vejr: ' + data.weather[0].description + '</h2>' +
+
+        '<h2>Pressure: ' + data.weather[0].main + '</h2>' +
+
+
+        // tilføjer vejrsymbol
+        '<figure>' +
+        '<img src="http://openweathermap.org/img/wn/' + data.weather[0].icon +
+        '.png" alt="Vejrsymbol">' +
+        '</figure>' +
+
+        // tilføjer klokkeslet for solens nedgang i vest
+        '<p> Solnedgang: ' + sunsetTime + '</p>' +
+
+        // afslutter #weatherInfo taggen
+        '</div>'; //
+
+    // URL to the weather icons: https://openweathermap.org/weather-conditions
 
 }).catch(err => {
     // Do something with error here
-    console.log('There was an error');
+    console.log('There was an error ...');
 });
 </script>
 
