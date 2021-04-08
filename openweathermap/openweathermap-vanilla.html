@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,17 +25,17 @@
         }
     </style>
 </head>
-
 <body>
 
     <h1>Openweathermap Eksempel</h1>
 
-    <!-- herunder kan du se vejroplysningerne -->
+    <!-- Below you'll see the weater info -->
     <div id="result"></div>
 
     <script>
         /*
-            @datasæt læses sådan:
+
+            Understand the URL:
 
             http://api.openweathermap.org/data/2.5/weather?
             q=Aarhus
@@ -44,10 +43,11 @@
             &units=metric
             &appid=201d090c9cceacfc8931df89310ebfbb
 
+
         */
 
-// token from OpenWeatherMap
 
+// token from OpenWeatherMap
 const appId = 'ADD-YOUR-TOKEN-HERE';
 
 
@@ -111,11 +111,9 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Aarhus&lang=da&units=met
 
     // URL to the weather icons: https://openweathermap.org/weather-conditions
 
-
-
 }).catch(err => {
-    // Do something with error here
-    console.log( 'Check the api key line 51.' )
+    // Debugging message
+    console.log( 'Check the const appId, now the value is: ' + appId )
 })
 </script>
 
