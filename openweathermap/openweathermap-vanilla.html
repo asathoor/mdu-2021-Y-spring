@@ -60,6 +60,11 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Aarhus&lang=da&units=met
     // Work with JSON data here
     console.log(data); // show what's in the json
 
+    // error message handler
+    if ( data.message ) {
+      console.log('There was an error: ' + data.message + ' Error code: ' + data.cod)
+    }
+
     // solnedgang
     var sunsetMs = data.sys.sunset * 1000; // dato-objektet har brug for millisek. Derfor * 1000
     var sunset = new Date(sunsetMs);
@@ -106,10 +111,12 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Aarhus&lang=da&units=met
 
     // URL to the weather icons: https://openweathermap.org/weather-conditions
 
+
+
 }).catch(err => {
     // Do something with error here
-    console.log('There was an error ...');
-});
+    console.log( 'Check the api key line 51.' )
+})
 </script>
 
 </body>
