@@ -1,11 +1,11 @@
 [
  {
-   "name": "Alice",
+   "name": "Jane",
    "age": 72,
    "eyecolor": "brown"
  },
  {
-   "name": "Tarzan",
+   "name": ["Tarzan", "Lord Greystoke"],
    "age": 43,
    "eyecolor": "grey"
  },
